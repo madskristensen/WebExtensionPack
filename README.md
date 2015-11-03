@@ -2,7 +2,7 @@
 A Visual Studio extension that installs a short list of
 highly valuable extensions targeted web development.
 
-[![Build status](https://ci.appveyor.com/api/projects/status/k8f8ny0jxq2h53wr?svg=true)](https://ci.appveyor.com/project/madskristensen/openinsublimetext)
+[![Build status](https://ci.appveyor.com/api/projects/status/7yqisx9nepdo5auu?svg=true)](https://ci.appveyor.com/project/madskristensen/webextensionpack)
 
 Download the extension at the
 [VS Gallery](https://visualstudiogallery.msdn.microsoft.com/384892a5-7b67-42f2-b7de-574ef254a02a)
