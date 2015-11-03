@@ -52,6 +52,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ExtensionList.cs" />
     <Compile Include="Helpers\Logger.cs" />
     <Compile Include="Helpers\Telemetry.cs" />
     <Compile Include="Installer\GalleryEntry.cs" />
