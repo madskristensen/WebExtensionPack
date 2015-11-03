@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace WebExtensionPack
 {
@@ -10,6 +12,7 @@ namespace WebExtensionPack
             {
                 Title = VSPackage.Title;
                 bar.Maximum = total;
+                bar.Value = 0;
                 lblText.Content = message;
             };
 
@@ -18,8 +21,12 @@ namespace WebExtensionPack
 
         public void SetMessage(string message)
         {
-            lblText.Content = message;
-            //bar.Value += 1;
+            Dispatcher.Invoke(new Action(() =>
+            {
+                lblText.Content = message;
+                bar.Value += 1;
+
+            }), DispatcherPriority.Normal, null);
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

@@ -14,7 +14,7 @@
 
         <Label Grid.Row="0" Name="lblText" Margin="10 10" Content="Preparing to install extensions..." />
 
-        <ProgressBar Grid.Row="1" Name="bar" HorizontalAlignment="Stretch" IsIndeterminate="True" Height="25" Margin="10 0" />
+        <ProgressBar Grid.Row="1" Name="bar" HorizontalAlignment="Stretch" Height="25" Margin="10 0" />
 
         <Grid Grid.Row="2" HorizontalAlignment="Right" Grid.ColumnSpan="3" Margin="0 10">
             <Grid.ColumnDefinitions>

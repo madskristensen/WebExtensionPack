@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -38,6 +39,9 @@ namespace WebExtensionPack
 
         private bool HasAlreadyRun()
         {
+#if DEBUG
+            return false;
+#else
             using (var key = UserRegistryRoot.CreateSubKey(Title))
             {
                 if (key.GetValue("Version", string.Empty).ToString() == Version)
@@ -47,6 +51,7 @@ namespace WebExtensionPack
             }
 
             return false;
+#endif
         }
 
         private async System.Threading.Tasks.Task Install()
@@ -55,19 +60,25 @@ namespace WebExtensionPack
             var manager = (IVsExtensionManager)GetService(typeof(SVsExtensionManager));
 
             var installed = manager.GetInstalledExtensions();
-            var productIds = ExtensionList.ProductIds();
-            var missing = productIds.Where(id => !installed.Any(ins => ins.Header.Identifier == id));
+            var products = ExtensionList.Products();
+            var missing = products.Where(product => !installed.Any(ins => ins.Header.Identifier == product.Key));
 
-            var progress = new InstallerProgress(missing.Count(), $"Downloading and installing {missing.Count()} extension(s)...");
+            if (!missing.Any())
+                return;
+
+            var progress = new InstallerProgress(missing.Count() + 1, $"Downloading extensions...");
             progress.Show();
 
             await System.Threading.Tasks.Task.Run(() =>
             {
-                foreach (var id in missing)
+                foreach (var product in missing)
                 {
-                    InstallExtension(repository, manager, id);
-                }
+                    if (!progress.IsVisible)
+                        break; // User cancelled the dialog
 
+                    progress.SetMessage($"Installing {product.Value}...");
+                    InstallExtension(repository, manager, product);
+                }
             });
 
             if (progress.IsVisible)
@@ -78,19 +89,22 @@ namespace WebExtensionPack
             }
         }
 
-        private static void InstallExtension(IVsExtensionRepository repository, IVsExtensionManager manager, string id)
+        private void InstallExtension(IVsExtensionRepository repository, IVsExtensionManager manager, KeyValuePair<string, string> product)
         {
             try
             {
                 GalleryEntry entry = repository.CreateQuery<GalleryEntry>(includeTypeInQuery: false, includeSkuInQuery: true, searchSource: "ExtensionManagerUpdate")
-                                                                                 .Where(e => e.VsixID == id)
+                                                                                 .Where(e => e.VsixID == product.Key)
                                                                                  .AsEnumerable()
                                                                                  .FirstOrDefault();
 
-                IInstallableExtension installable = repository.Download(entry);
-                manager.Install(installable, false);
+                if (entry != null)
+                {
+                    IInstallableExtension installable = repository.Download(entry);
+                    manager.Install(installable, false);
 
-                Telemetry.TrackEvent(installable.Header.Name);
+                    Telemetry.TrackEvent(installable.Header.Name);
+                }
             }
             catch (Exception ex)
             {
