@@ -24,6 +24,10 @@ Visual Studio, the following extensions will be installed:
 - [Open Command Line](https://visualstudiogallery.msdn.microsoft.com/4e84e2cf-2d6b-472a-b1e2-b84932511379)
 - [Package Installer](https://visualstudiogallery.msdn.microsoft.com/753b9720-1638-4f9a-ad8d-2c45a410fd74)
 
+If you already have one or more of these extensions installed,
+Web Extension Pack will not re-install them. It will simply
+just skip them.
+
 ### Installing
 It doesn't take long to install the extensions. Probably less
 than a minute.
