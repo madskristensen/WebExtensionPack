@@ -5,7 +5,7 @@ highly valuable extensions targeted web development.
 [![Build status](https://ci.appveyor.com/api/projects/status/7yqisx9nepdo5auu?svg=true)](https://ci.appveyor.com/project/madskristensen/webextensionpack)
 
 Download the extension at the
-[VS Gallery](https://visualstudiogallery.msdn.microsoft.com/384892a5-7b67-42f2-b7de-574ef254a02a)
+[VS Gallery](https://visualstudiogallery.msdn.microsoft.com/f3b504c6-0095-42f1-a989-51d5fc2a8459)
 or get the
 [nightly build](http://vsixgallery.com/extension/92e3e73b-510f-45bb-8aee-c637e83778b3/)
 

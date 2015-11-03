@@ -22,6 +22,9 @@ namespace WebExtensionPack
 
         protected async override void Initialize()
         {
+            Logger.Initialize(this, Title);
+            Telemetry.Initialize(this, Version, "fbfac2d0-cd41-4458-9106-488be47240c2");
+
             await Dispatcher.CurrentDispatcher.BeginInvoke(new Action(async () =>
             {
                 if (!HasAlreadyRun())
@@ -92,13 +95,22 @@ namespace WebExtensionPack
 
         private static void InstallExtension(IVsExtensionRepository repository, IVsExtensionManager manager, string id)
         {
-            GalleryEntry entry = repository.CreateQuery<GalleryEntry>(includeTypeInQuery: false, includeSkuInQuery: true, searchSource: "ExtensionManagerUpdate")
-                                                                             .Where(e => e.VsixID == id)
-                                                                             .AsEnumerable()
-                                                                             .FirstOrDefault();
+            try
+            {
+                GalleryEntry entry = repository.CreateQuery<GalleryEntry>(includeTypeInQuery: false, includeSkuInQuery: true, searchSource: "ExtensionManagerUpdate")
+                                                                                 .Where(e => e.VsixID == id)
+                                                                                 .AsEnumerable()
+                                                                                 .FirstOrDefault();
 
-            IInstallableExtension installable = repository.Download(entry);
-            manager.Install(installable, false);
+                IInstallableExtension installable = repository.Download(entry);
+                manager.Install(installable, false);
+
+                Telemetry.TrackEvent($"Install {installable.Header.Name}");
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex);
+            }
         }
 
         private void PromptForRestart()
