@@ -60,9 +60,10 @@
     <Compile Include="VSPackage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\LICENSE">
+    <Content Include="..\LICENSE">
       <Link>Resources\LICENSE</Link>
-    </None>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <None Include="packages.config" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
