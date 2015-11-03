@@ -3,7 +3,7 @@
     <Metadata>
         <Identity Id="92e3e73b-510f-45bb-8aee-c637e83778b3" Version="1.0" Language="en-US" Publisher="Mads Kristensen" />
         <DisplayName>Web Extension Pack</DisplayName>
-        <Description xml:space="preserve">An extension pack for web developers using Visual Studio. A currated list of relevant extensions for web development are contained within this extension so you don't have to search for them.</Description>
+        <Description xml:space="preserve">An extension pack for web developers using Visual Studio. A curated list of relevant extensions for web development are contained within this extension so you don't have to search for them.</Description>
         <License>Resources\LICENSE</License>
         <Icon>Resources\Icon.png</Icon>
         <PreviewImage>Resources\Preview.png</PreviewImage>
