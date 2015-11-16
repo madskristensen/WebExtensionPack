@@ -37,13 +37,3 @@ than a minute.
 When installation is done you will be prompted to restart
 Visual Studio. After the restart, all the extensions are
 fully functional and ready to use.
-
-### Development
-
-When cloning this repo you may be required to set some Debug values in order to debug the project.
-
-- Start external program: *C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\devenv.exe*
-- Command line arguments: */rootsuffix Exp*
-
-
-![Installing progress](art/debug-properties.png)
