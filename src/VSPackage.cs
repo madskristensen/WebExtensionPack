@@ -73,11 +73,18 @@ namespace WebExtensionPack
             {
                 foreach (var product in missing)
                 {
+                    progress.AddExtension(product.Key, product.Value);
+                }
+
+                foreach (var product in missing)
+                {
                     if (!progress.IsVisible)
                         break; // User cancelled the dialog
 
+                    progress.StartDownloading(product.Key);
                     progress.SetMessage($"Installing {product.Value}...");
                     InstallExtension(repository, manager, product);
+                    progress.InstallComplete(product.Key);
                 }
             });
 

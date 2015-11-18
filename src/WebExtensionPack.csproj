@@ -52,6 +52,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Controls\ExtensionItem.xaml.cs">
+      <DependentUpon>ExtensionItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExtensionList.cs" />
     <Compile Include="Helpers\Logger.cs" />
     <Compile Include="Helpers\Telemetry.cs" />
@@ -209,6 +212,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\ExtensionItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Installer\InstallerProgress.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
