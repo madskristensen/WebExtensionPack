@@ -7,7 +7,7 @@ namespace WebExtensionPack
         public static IDictionary<string, string> Products()
         {
             return new Dictionary<string, string> {
-                { "5fb7364d-2e8c-44a4-95eb-2a382e30fec9","Web Essentials" },
+                { "5fb7364d-2e8c-44a4-95eb-2a382e30fec9", "Web Essentials" },
                 { "148ffa77-d70a-407f-892b-9ee542346862", "Web Compiler"},
                 { "36bf2130-106e-40f2-89ff-a2bdac6be879", "Web Analyzer"},
                 { "bf95754f-93d3-42ff-bfe3-e05d23188b08", "Image optimizer"},
