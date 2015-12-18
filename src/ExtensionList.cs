@@ -15,6 +15,8 @@ namespace WebExtensionPack
                 { "6ed6c371-5815-407f-9148-f64b3a025dd9", "Bootstrap Snippet Pack"},
                 { "f4ab1e64-5d35-4f06-bad9-bf414f4b3bbb", "Open Command Line"},
                 { "fdd64809-376e-4542-92ce-808a8df06bcc", "Package Installer"},
+                { "d7f89ba3-815c-4feb-89b9-68d1654e2138", "NPM Scripts Task Runner"},
+                { "10d9b3af-1338-4c45-bc99-4ec38c3a11fb", "Browser Sync"},
             };
         }
     }
