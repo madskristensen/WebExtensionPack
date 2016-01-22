@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:WebExtensionPack.Controls"
              mc:Ignorable="d"
-             d:DesignHeight="30" Height="30"
+             d:DesignHeight="25" Height="25"
              d:DesignWidth="400">
     <UserControl.Resources>
         <Storyboard x:Key="Storyboard1"
@@ -23,7 +23,7 @@
             <BeginStoryboard Storyboard="{StaticResource Storyboard1}" />
         </EventTrigger>
     </UserControl.Triggers>
-    <Grid Height="30">
+    <Grid Height="25">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30" />
             <ColumnDefinition Width="*" />
@@ -101,7 +101,7 @@
 
         <TextBlock x:Name="ExtensionName"
                    Grid.Column="1"
-                   FontSize="20"
+                   FontSize="17"
                    Margin="10, 0"
                    Text="Extension"></TextBlock>
 
