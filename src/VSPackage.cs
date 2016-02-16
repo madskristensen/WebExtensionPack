@@ -20,6 +20,7 @@ namespace WebExtensionPack
         public const string Version = "1.0";
         public const string Title = "Web Extension Pack";
 
+
         protected async override void Initialize()
         {
             Logger.Initialize(this, Title);
