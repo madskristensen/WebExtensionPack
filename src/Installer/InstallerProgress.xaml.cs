@@ -11,7 +11,7 @@ namespace WebExtensionPack
         {
             Loaded += delegate
             {
-                Title = Vsix.Name;
+                Title = VSPackage.Title;
                 bar.Maximum = total;
                 bar.Value = 0;
                 lblText.Content = message;

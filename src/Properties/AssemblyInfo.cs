@@ -2,16 +2,16 @@
 using System.Runtime.InteropServices;
 using WebExtensionPack;
 
-[assembly: AssemblyTitle(Vsix.Name)]
-[assembly: AssemblyDescription(Vsix.Description)]
+[assembly: AssemblyTitle(VSPackage.Title)]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany(Vsix.Author)]
-[assembly: AssemblyProduct(Vsix.Name)]
-[assembly: AssemblyCopyright(Vsix.Author)]
+[assembly: AssemblyCompany("Mads Kristensen")]
+[assembly: AssemblyProduct(VSPackage.Title)]
+[assembly: AssemblyCopyright("Mads Kristensen")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 [assembly: ComVisible(false)]
 
-[assembly: AssemblyVersion(Vsix.Version)]
-[assembly: AssemblyFileVersion(Vsix.Version)]
+[assembly: AssemblyVersion(VSPackage.Version)]
+[assembly: AssemblyFileVersion(VSPackage.Version)]
