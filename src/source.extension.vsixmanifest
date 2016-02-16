@@ -3,7 +3,7 @@
     <Metadata>
         <Identity Id="92e3e73b-510f-45bb-8aee-c637e83778b3" Version="1.1" Language="en-US" Publisher="Mads Kristensen" />
         <DisplayName>Web Extension Pack</DisplayName>
-        <Description xml:space="preserve">The easiest way to set up Visual Studio for the ultimate web development experience</Description>
+        <Description xml:space="preserve">The easiest way to set up Visual Studio for the ultimate web development experience.</Description>
         <MoreInfo>https://visualstudiogallery.msdn.microsoft.com/f3b504c6-0095-42f1-a989-51d5fc2a8459</MoreInfo>
         <License>Resources\LICENSE</License>
         <Icon>Resources\Icon.png</Icon>
