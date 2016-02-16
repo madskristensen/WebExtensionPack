@@ -11,19 +11,15 @@ using Microsoft.VisualStudio.Shell.Interop;
 namespace WebExtensionPack
 {
     [PackageRegistration(UseManagedResourcesOnly = true)]
-    [InstalledProductRegistration("#110", "#112", Version, IconResourceID = 400)]
+    [InstalledProductRegistration("#110", "#112", Vsix.Version, IconResourceID = 400)]
     [ProvideAutoLoad(UIContextGuids80.NoSolution)]
-    [Guid(ProductId)]
+    [Guid(Vsix.Id)]
     public sealed class VSPackage : Package
     {
-        public const string ProductId = "92e3e73b-510f-45bb-8aee-c637e83778b3";
-        public const string Version = "1.0";
-        public const string Title = "Web Extension Pack";
-
         protected async override void Initialize()
         {
-            Logger.Initialize(this, Title);
-            Telemetry.Initialize(this, Version, "fbfac2d0-cd41-4458-9106-488be47240c2");
+            Logger.Initialize(this, Vsix.Name);
+            Telemetry.Initialize(this, Vsix.Version, "fbfac2d0-cd41-4458-9106-488be47240c2");
 
             await Dispatcher.CurrentDispatcher.BeginInvoke(new Action(async () =>
             {
@@ -122,7 +118,7 @@ namespace WebExtensionPack
         private void PromptForRestart()
         {
             string prompt = "You must restart Visual Studio for the extensions to be loaded.\r\rRestart now?";
-            var result = MessageBox.Show(prompt, Title, MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+            var result = MessageBox.Show(prompt, Vsix.Name, MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
 
             if (result == MessageBoxResult.Yes)
             {
