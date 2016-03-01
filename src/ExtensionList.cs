@@ -17,6 +17,7 @@ namespace WebExtensionPack
                 { "fdd64809-376e-4542-92ce-808a8df06bcc", "Package Installer"},
                 { "d7f89ba3-815c-4feb-89b9-68d1654e2138", "NPM Scripts Task Runner"},
                 { "10d9b3af-1338-4c45-bc99-4ec38c3a11fb", "Browser Sync"},
+                { "2d8aa02a-8810-421f-97b9-86efc573fea3", "Browser Reload on Save"}
                 { "2a20580c-7be4-4440-bcd6-8dcf5aa2004e", "JavaScript Snippet Pack" },
                 { "a7dff10f-3592-429c-9dc1-622fe517921d", "React Snippet Pack" },
             };
