@@ -20,8 +20,10 @@ namespace WebExtensionPack
 
                 foreach (var product in extensions)
                 {
-                    AddExtension(product.Key, product.Value);
+                    Extensions.Children.Add(new ExtensionItem(product.Key, product.Value));
                 }
+
+                Focus();
             };
 
             InitializeComponent();
@@ -39,13 +41,8 @@ namespace WebExtensionPack
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
+            Visibility = Visibility.Hidden;
             Close();
-        }
-
-        public void AddExtension(string guid, string name)
-        {
-            Height += 28;
-            Extensions.Children.Add(new ExtensionItem(guid, name));
         }
 
         public void StartDownloading(string key)

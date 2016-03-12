@@ -23,7 +23,7 @@ namespace WebExtensionPack
 
             await Dispatcher.CurrentDispatcher.BeginInvoke(new Action(async () =>
             {
-                    await Install();
+                await Install();
 
             }), DispatcherPriority.SystemIdle, null);
 
@@ -42,27 +42,33 @@ namespace WebExtensionPack
             if (!missing.Any())
                 return;
 
-            var progress = new InstallerProgress(missing, $"Downloading extensions...");
-            progress.Show();
+            var dte = (EnvDTE.DTE)GetService(typeof(EnvDTE.DTE));
+
+            var hwnd = new IntPtr(dte.MainWindow.HWnd);
+            var window = (Window)System.Windows.Interop.HwndSource.FromHwnd(hwnd).RootVisual;
+
+            var dialog = new InstallerProgress(missing, $"Downloading extensions...");
+            dialog.Owner = window;
+            dialog.Show();
 
             await System.Threading.Tasks.Task.Run(() =>
             {
                 foreach (var product in missing)
                 {
-                    if (!progress.IsVisible)
+                    if (!dialog.IsVisible)
                         break; // User cancelled the dialog
 
-                    progress.StartDownloading(product.Key);
-                    progress.SetMessage($"Installing {product.Value}...");
+                    dialog.StartDownloading(product.Key);
+                    dialog.SetMessage($"Installing {product.Value}...");
                     InstallExtension(repository, manager, product);
-                    progress.InstallComplete(product.Key);
+                    dialog.InstallComplete(product.Key);
                 }
             });
 
-            if (progress.IsVisible)
+            if (dialog.IsVisible)
             {
-                progress.Close();
-                progress = null;
+                dialog.Close();
+                dialog = null;
                 PromptForRestart();
             }
         }
@@ -98,9 +104,9 @@ namespace WebExtensionPack
         private void PromptForRestart()
         {
             string prompt = "You must restart Visual Studio for the extensions to be loaded.\r\rRestart now?";
-            var result = MessageBox.Show(prompt, Vsix.Name, MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var result = MessageBox.Show(prompt, Vsix.Name, MessageBoxButton.OKCancel, MessageBoxImage.Question);
 
-            if (result == MessageBoxResult.Yes)
+            if (result == MessageBoxResult.OK)
             {
                 IVsShell4 shell = (IVsShell4)GetService(typeof(SVsShell));
                 shell.Restart((uint)__VSRESTARTTYPE.RESTART_Normal);
