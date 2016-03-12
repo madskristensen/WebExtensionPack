@@ -20,6 +20,8 @@ namespace WebExtensionPack
                 { "2d8aa02a-8810-421f-97b9-86efc573fea3", "Browser Reload on Save"},
                 { "2a20580c-7be4-4440-bcd6-8dcf5aa2004e", "JavaScript Snippet Pack" },
                 { "a7dff10f-3592-429c-9dc1-622fe517921d", "React Snippet Pack" },
+                { "51b81721-cf4e-4ce0-a595-972b1ca2a186", "Suggested Extensions" },
+                { "2E78AA18-E864-4FBB-B8C8-6186FC865DB3", "Add New File" },
             };
         }
     }

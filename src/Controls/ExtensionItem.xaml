@@ -26,7 +26,8 @@
     <Grid Height="25">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="7*" />
+            <ColumnDefinition Width="363*"/>
         </Grid.ColumnDefinitions>
 
         <Grid x:Name="GridLoading"
@@ -100,10 +101,10 @@
         </Grid>
 
         <TextBlock x:Name="ExtensionName"
-                   Grid.Column="1"
-                   FontSize="17"
-                   Margin="10, 0"
-                   Text="Extension"></TextBlock>
+                   Grid.Column="2"
+                   FontSize="13.333"
+                   Margin="2.915,4,10,3"
+                   Text="Extension" VerticalAlignment="Center"></TextBlock>
 
     </Grid>
 </UserControl>

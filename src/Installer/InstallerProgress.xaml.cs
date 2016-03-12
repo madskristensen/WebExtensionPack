@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
 using WebExtensionPack.Controls;
@@ -7,14 +9,19 @@ namespace WebExtensionPack
 {
     public partial class InstallerProgress : Window
     {
-        public InstallerProgress(int total, string message)
+        public InstallerProgress(IEnumerable<KeyValuePair<string, string>> extensions, string message)
         {
             Loaded += delegate
             {
                 Title = Vsix.Name;
-                bar.Maximum = total;
+                bar.Maximum = extensions.Count() + 1;
                 bar.Value = 0;
                 lblText.Content = message;
+
+                foreach (var product in extensions)
+                {
+                    AddExtension(product.Key, product.Value);
+                }
             };
 
             InitializeComponent();
@@ -37,16 +44,13 @@ namespace WebExtensionPack
 
         public void AddExtension(string guid, string name)
         {
-            this.Dispatcher.Invoke(() =>
-            {
-                this.Height += 40;
-                this.Extensions.Children.Add(new ExtensionItem(guid, name) { Margin = new Thickness(0, 5, 0, 5) });
-            });
+            Height += 25;
+            Extensions.Children.Add(new ExtensionItem(guid, name));
         }
 
         public void StartDownloading(string key)
         {
-            this.Dispatcher.Invoke(() =>
+            Dispatcher.Invoke(() =>
             {
                 foreach (var child in Extensions.Children)
                 {

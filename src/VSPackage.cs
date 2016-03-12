@@ -23,31 +23,11 @@ namespace WebExtensionPack
 
             await Dispatcher.CurrentDispatcher.BeginInvoke(new Action(async () =>
             {
-                if (!HasAlreadyRun())
-                {
                     await Install();
-                }
 
             }), DispatcherPriority.SystemIdle, null);
 
             base.Initialize();
-        }
-
-        private bool HasAlreadyRun()
-        {
-#if DEBUG
-            return false;
-#else
-            using (var key = UserRegistryRoot.CreateSubKey(Vsix.Name))
-            {
-                if (key.GetValue("Version", string.Empty).ToString() == Vsix.Version)
-                    return true;
-
-                key.SetValue("Version", Vsix.Version);
-            }
-
-            return false;
-#endif
         }
 
         private async System.Threading.Tasks.Task Install()
@@ -62,16 +42,11 @@ namespace WebExtensionPack
             if (!missing.Any())
                 return;
 
-            var progress = new InstallerProgress(missing.Count() + 1, $"Downloading extensions...");
+            var progress = new InstallerProgress(missing, $"Downloading extensions...");
             progress.Show();
 
             await System.Threading.Tasks.Task.Run(() =>
             {
-                foreach (var product in missing)
-                {
-                    progress.AddExtension(product.Key, product.Value);
-                }
-
                 foreach (var product in missing)
                 {
                     if (!progress.IsVisible)
@@ -94,6 +69,11 @@ namespace WebExtensionPack
 
         private void InstallExtension(IVsExtensionRepository repository, IVsExtensionManager manager, KeyValuePair<string, string> product)
         {
+#if DEBUG
+            System.Threading.Thread.Sleep(1000);
+            return;
+#endif
+
             try
             {
                 GalleryEntry entry = repository.CreateQuery<GalleryEntry>(includeTypeInQuery: false, includeSkuInQuery: true, searchSource: "ExtensionManagerUpdate")
@@ -118,13 +98,12 @@ namespace WebExtensionPack
         private void PromptForRestart()
         {
             string prompt = "You must restart Visual Studio for the extensions to be loaded.\r\rRestart now?";
-            var result = MessageBox.Show(prompt, Vsix.Name, MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+            var result = MessageBox.Show(prompt, Vsix.Name, MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (result == MessageBoxResult.Yes)
             {
                 IVsShell4 shell = (IVsShell4)GetService(typeof(SVsShell));
                 shell.Restart((uint)__VSRESTARTTYPE.RESTART_Normal);
-
             }
         }
     }
