@@ -59,6 +59,11 @@ When installation is done you will be prompted to restart
 Visual Studio. After the restart, all the extensions are
 fully functional and ready to use.
 
+## Suggest new extensions
+If you know of any good extensions that you think would benefit web
+developers, then log an issue with the suggestion on the 
+[GitHub issue tracker](https://github.com/madskristensen/WebExtensionPack/issues).
+
 ## Contribute
 Check out the [contribution guidelines](.github/CONTRIBUTING.md)
 if you want to contribute to this project.
