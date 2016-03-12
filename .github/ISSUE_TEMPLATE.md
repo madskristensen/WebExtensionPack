@@ -1,3 +1,9 @@
+## Suggest an extension:
+Add the name and a link to the VS Gallery download page.
+
+
+...or report a bug:
+
 ### Installed product versions
 - Visual Studio: [example 2015 Professional]
 - This extension: [example 1.1.21]
