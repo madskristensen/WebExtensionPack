@@ -66,7 +66,7 @@ namespace WebExtensionPack
 
         public void InstallComplete(string key)
         {
-            this.Dispatcher.Invoke(() =>
+            Dispatcher.Invoke(() =>
             {
                 foreach (var child in Extensions.Children)
                 {
