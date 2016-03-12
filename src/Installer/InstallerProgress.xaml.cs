@@ -44,7 +44,7 @@ namespace WebExtensionPack
 
         public void AddExtension(string guid, string name)
         {
-            Height += 25;
+            Height += 28;
             Extensions.Children.Add(new ExtensionItem(guid, name));
         }
 
