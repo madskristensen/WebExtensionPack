@@ -12,13 +12,11 @@ namespace WebExtensionPack
                 { "36bf2130-106e-40f2-89ff-a2bdac6be879", "Web Analyzer"},
                 { "bf95754f-93d3-42ff-bfe3-e05d23188b08", "Image optimizer"},
                 { "950d05f7-bb25-43ce-b682-44b377b5307d", "Glyphfriend"},
-                { "6ed6c371-5815-407f-9148-f64b3a025dd9", "Bootstrap Snippet Pack"},
                 { "f4ab1e64-5d35-4f06-bad9-bf414f4b3bbb", "Open Command Line"},
                 { "fdd64809-376e-4542-92ce-808a8df06bcc", "Package Installer"},
                 { "10d9b3af-1338-4c45-bc99-4ec38c3a11fb", "Browser Sync"},
                 { "2d8aa02a-8810-421f-97b9-86efc573fea3", "Browser Reload on Save"},
                 { "2a20580c-7be4-4440-bcd6-8dcf5aa2004e", "JavaScript Snippet Pack" },
-                { "a7dff10f-3592-429c-9dc1-622fe517921d", "React Snippet Pack" },
                 { "51b81721-cf4e-4ce0-a595-972b1ca2a186", "Suggested Extensions" },
                 { "2E78AA18-E864-4FBB-B8C8-6186FC865DB3", "Add New File" },
             };
