@@ -11,6 +11,12 @@ download in the
 These are the changes to each version that has been released
 on the official Visual Studio extension gallery.
 
+## 1.3
+
+**2016-04-13**
+
+- [x] Added [Web Accessibility Checker](https://visualstudiogallery.msdn.microsoft.com/3aabefab-1681-4fea-8f95-6a62e2f0f1ec) extension
+
 ## 1.2
 
 **2016-03-11**

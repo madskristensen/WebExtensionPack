@@ -19,6 +19,7 @@ namespace WebExtensionPack
                 { "2a20580c-7be4-4440-bcd6-8dcf5aa2004e", "JavaScript Snippet Pack" },
                 { "51b81721-cf4e-4ce0-a595-972b1ca2a186", "Suggested Extensions" },
                 { "2E78AA18-E864-4FBB-B8C8-6186FC865DB3", "Add New File" },
+                { "25a79d25-0fff-4748-afaa-3a67ed116bc9", "Web Accessibility Checker" },
             };
         }
     }
