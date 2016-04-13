@@ -69,7 +69,7 @@ namespace WebExtensionPack
             {
                 dialog.Close();
                 dialog = null;
-                PromptForRestart();
+                PromptForRestart(missing.Select(ext => ext.Value));
             }
         }
 
@@ -101,9 +101,10 @@ namespace WebExtensionPack
             }
         }
 
-        private void PromptForRestart()
+        private void PromptForRestart(IEnumerable<string> extensions)
         {
-            string prompt = "You must restart Visual Studio for the extensions to be loaded.\r\rRestart now?";
+            string list = string.Join(Environment.NewLine, extensions);
+            string prompt = $"The following extensions were installed:\r\r{list}\r\rDo you want to restart Visual Studio now?";
             var result = MessageBox.Show(prompt, Vsix.Name, MessageBoxButton.OKCancel, MessageBoxImage.Question);
 
             if (result == MessageBoxResult.OK)

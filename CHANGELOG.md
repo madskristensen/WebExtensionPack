@@ -16,6 +16,7 @@ on the official Visual Studio extension gallery.
 **2016-04-13**
 
 - [x] Added [Web Accessibility Checker](https://visualstudiogallery.msdn.microsoft.com/3aabefab-1681-4fea-8f95-6a62e2f0f1ec) extension
+- [x] Added list of installed extensions to restart prompt
 
 ## 1.2
 
