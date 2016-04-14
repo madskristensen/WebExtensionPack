@@ -37,7 +37,7 @@ namespace WebExtensionPack
 
             var installed = manager.GetInstalledExtensions();
             var products = ExtensionList.Products();
-            var missing = products.Where(product => !installed.Any(ins => ins.Header.Identifier == product.Key));
+            var missing = products.Where(product => !installed.Any(ins => ins.Header.Identifier == product.Key)).ToArray();
 
             if (!missing.Any())
                 return;
@@ -65,7 +65,7 @@ namespace WebExtensionPack
                 }
             });
 
-            if (dialog.IsVisible)
+            if (dialog != null && dialog.IsVisible)
             {
                 dialog.Close();
                 dialog = null;
