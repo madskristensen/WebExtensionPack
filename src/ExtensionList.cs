@@ -9,7 +9,6 @@ namespace WebExtensionPack
             return new Dictionary<string, string> {
                 { "5fb7364d-2e8c-44a4-95eb-2a382e30fec9", "Web Essentials" },
                 { "148ffa77-d70a-407f-892b-9ee542346862", "Web Compiler"},
-                { "36bf2130-106e-40f2-89ff-a2bdac6be879", "Web Analyzer"},
                 { "bf95754f-93d3-42ff-bfe3-e05d23188b08", "Image optimizer"},
                 { "950d05f7-bb25-43ce-b682-44b377b5307d", "Glyphfriend"},
                 { "f4ab1e64-5d35-4f06-bad9-bf414f4b3bbb", "Open Command Line"},
@@ -20,6 +19,9 @@ namespace WebExtensionPack
                 { "51b81721-cf4e-4ce0-a595-972b1ca2a186", "Suggested Extensions" },
                 { "2E78AA18-E864-4FBB-B8C8-6186FC865DB3", "Add New File" },
                 { "25a79d25-0fff-4748-afaa-3a67ed116bc9", "Web Accessibility Checker" },
+                { "a0ae318b-4f07-4f71-93cb-f21d3f03c6d3", "Bundler & Minifier" },
+                { "6c799bc4-0d4c-4172-98bc-5d464b612dca", "File Nesting" },
+                { "a3112f81-e423-4f88-9f2c-e089a309e48e", "Editor Enhancements" },
             };
         }
     }
