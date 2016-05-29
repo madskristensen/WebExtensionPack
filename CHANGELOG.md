@@ -11,6 +11,12 @@ download in the
 These are the changes to each version that has been released
 on the official Visual Studio extension gallery.
 
+## 1.4
+
+**2016-05-29**
+
+- [x] Added [Image Sprites](https://visualstudiogallery.msdn.microsoft.com/8bb845e9-5717-4eae-aed3-1fdf6fe5819a) extension
+
 ## 1.3
 
 **2016-04-13**
