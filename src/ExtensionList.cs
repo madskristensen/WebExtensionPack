@@ -22,6 +22,7 @@ namespace WebExtensionPack
                 { "a0ae318b-4f07-4f71-93cb-f21d3f03c6d3", "Bundler & Minifier" },
                 { "6c799bc4-0d4c-4172-98bc-5d464b612dca", "File Nesting" },
                 { "a3112f81-e423-4f88-9f2c-e089a309e48e", "Editor Enhancements" },
+                { "cd92c0c6-2c32-49a3-83ca-0dc767c7d78e", "Image Sprites" },
             };
         }
     }
