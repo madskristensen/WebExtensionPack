@@ -19,7 +19,6 @@ namespace WebExtensionPack
         protected async override void Initialize()
         {
             Logger.Initialize(this, Vsix.Name);
-            Telemetry.Initialize(this, Vsix.Version, "fbfac2d0-cd41-4458-9106-488be47240c2");
 
             await Dispatcher.CurrentDispatcher.BeginInvoke(new Action(async () =>
             {
@@ -34,14 +33,13 @@ namespace WebExtensionPack
         {
             var repository = (IVsExtensionRepository)GetService(typeof(SVsExtensionRepository));
             var manager = (IVsExtensionManager)GetService(typeof(SVsExtensionManager));
-
-            var installed = manager.GetInstalledExtensions();
-            var products = ExtensionList.Products();
-            var missing = products.Where(product => !installed.Any(ins => ins.Header.Identifier == product.Key)).ToArray();
+            var store = new DataStore();
+            var missing = GetMissingExtensions(manager, store);
 
             if (!missing.Any())
                 return;
 
+            var allToBeInstalled = missing.ToArray();
             var dte = (EnvDTE.DTE)GetService(typeof(EnvDTE.DTE));
 
             var hwnd = new IntPtr(dte.MainWindow.HWnd);
@@ -53,27 +51,29 @@ namespace WebExtensionPack
 
             await System.Threading.Tasks.Task.Run(() =>
             {
-                foreach (var product in missing)
+                foreach (var product in allToBeInstalled)
                 {
                     if (!dialog.IsVisible)
                         break; // User cancelled the dialog
 
                     dialog.StartDownloading(product.Key);
                     dialog.SetMessage($"Installing {product.Value}...");
-                    InstallExtension(repository, manager, product);
+                    InstallExtension(repository, manager, product, store);
                     dialog.InstallComplete(product.Key);
                 }
+
+                store.Save();
             });
 
             if (dialog != null && dialog.IsVisible)
             {
                 dialog.Close();
                 dialog = null;
-                PromptForRestart(missing.Select(ext => ext.Value));
+                PromptForRestart(allToBeInstalled.Select(ext => ext.Value));
             }
         }
 
-        private void InstallExtension(IVsExtensionRepository repository, IVsExtensionManager manager, KeyValuePair<string, string> product)
+        private void InstallExtension(IVsExtensionRepository repository, IVsExtensionManager manager, KeyValuePair<string, string> product, DataStore store)
         {
 #if DEBUG
             System.Threading.Thread.Sleep(1000);
@@ -91,8 +91,7 @@ namespace WebExtensionPack
                 {
                     IInstallableExtension installable = repository.Download(entry);
                     manager.Install(installable, false);
-
-                    Telemetry.TrackEvent(installable.Header.Name);
+                    store.PreviouslyInstalledExtensions.Add(entry.VsixID);
                 }
             }
             catch (Exception ex)
@@ -101,13 +100,23 @@ namespace WebExtensionPack
             }
         }
 
+        private IEnumerable<KeyValuePair<string, string>> GetMissingExtensions(IVsExtensionManager manager, DataStore store)
+        {
+            var installed = manager.GetInstalledExtensions();
+            var products = ExtensionList.Products();
+            var notInstalled = products.Where(product => !installed.Any(ins => ins.Header.Identifier == product.Key)).ToArray();
+
+            return notInstalled.Where(ext => !store.HasBeenInstalled(ext.Key));
+
+        }
+
         private void PromptForRestart(IEnumerable<string> extensions)
         {
             string list = string.Join(Environment.NewLine, extensions);
             string prompt = $"The following extensions were installed:\r\r{list}\r\rDo you want to restart Visual Studio now?";
-            var result = MessageBox.Show(prompt, Vsix.Name, MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            var answer = VsShellUtilities.ShowMessageBox(this, prompt, Vsix.Name, OLEMSGICON.OLEMSGICON_QUERY, OLEMSGBUTTON.OLEMSGBUTTON_OKCANCEL, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_SECOND);
 
-            if (result == MessageBoxResult.OK)
+            if (answer == (int)MessageBoxResult.OK)
             {
                 IVsShell4 shell = (IVsShell4)GetService(typeof(SVsShell));
                 shell.Restart((uint)__VSRESTARTTYPE.RESTART_Normal);
