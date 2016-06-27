@@ -14,11 +14,13 @@ namespace WebExtensionPack
     [InstalledProductRegistration("#110", "#112", Vsix.Version, IconResourceID = 400)]
     [ProvideAutoLoad(UIContextGuids80.NoSolution)]
     [Guid(Vsix.Id)]
+    [ProvideMenuResource("Menus.ctmenu", 1)]
     public sealed class VSPackage : Package
     {
         protected async override void Initialize()
         {
             Logger.Initialize(this, Vsix.Name);
+            ResetExtensions.Initialize(this);
 
             await Dispatcher.CurrentDispatcher.BeginInvoke(new Action(async () =>
             {

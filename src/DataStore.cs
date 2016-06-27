@@ -7,10 +7,11 @@ namespace WebExtensionPack
 {
     public class DataStore
     {
-        const string _fileName = "%userprofile%\\.webextensionpack";
+        private static string _configFile;
 
         public DataStore()
         {
+            _configFile = Environment.ExpandEnvironmentVariables("%userprofile%\\.webextensionpack");
             Initialize();
         }
 
@@ -23,18 +24,29 @@ namespace WebExtensionPack
 
         public void Save()
         {
-            var path = Environment.ExpandEnvironmentVariables(_fileName);
-            File.WriteAllLines(path, PreviouslyInstalledExtensions);
+            File.WriteAllLines(_configFile, PreviouslyInstalledExtensions);
+        }
+
+        public bool Reset()
+        {
+            try
+            {
+                File.Delete(_configFile);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex);
+                return false;
+            }
         }
 
         private void Initialize()
         {
             try
             {
-                var path = Environment.ExpandEnvironmentVariables(_fileName);
-
-                if (File.Exists(path))
-                    PreviouslyInstalledExtensions = File.ReadAllLines(path).Where(l => !string.IsNullOrWhiteSpace(l)).ToList();
+                if (File.Exists(_configFile))
+                    PreviouslyInstalledExtensions = File.ReadAllLines(_configFile).Where(l => !string.IsNullOrWhiteSpace(l)).ToList();
             }
             catch (Exception ex)
             {

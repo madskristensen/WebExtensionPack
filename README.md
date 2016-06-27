@@ -62,6 +62,12 @@ When installation is done you will be prompted to restart
 Visual Studio. After the restart, all the extensions are
 fully functional and ready to use.
 
+## Reset Web Extension Pack
+If you've uninstalled any of the extensions installed by Web Extension
+Pack, then those extensions won't be installed again automatically.
+
+To reset this behavior go to _Tools -> Reset Web Extension Pack..._
+
 ## Suggest new extensions
 If you know of any good extensions that you think would benefit web
 developers, then log an issue with the suggestion on the 

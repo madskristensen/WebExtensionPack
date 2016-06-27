@@ -1,6 +1,6 @@
 # Roadmap
 
-- [ ] Button to reset installed extensions
+- [ ] Nothing yet...
 
 Features that have a checkmark are complete and available for
 download in the
@@ -16,6 +16,7 @@ on the official Visual Studio extension gallery.
 **2016-06-27**
 
 - [x] Don't re-install extensions that have been uninstalled
+- [x] Button to reset installed extensions
 
 ## 1.4
 
