@@ -10,9 +10,9 @@ using Microsoft.VisualStudio.Shell.Interop;
 
 namespace WebExtensionPack
 {
-    [PackageRegistration(UseManagedResourcesOnly = true)]
+    [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [InstalledProductRegistration("#110", "#112", Vsix.Version, IconResourceID = 400)]
-    [ProvideAutoLoad(UIContextGuids80.NoSolution)]
+    [ProvideAutoLoad(UIContextGuids80.NoSolution, PackageAutoLoadFlags.BackgroundLoad)]
     [Guid(Vsix.Id)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     public sealed class VSPackage : Package
