@@ -12,7 +12,7 @@ or get the
 A Visual Studio extension that installs a short list of
 highly valuable extensions targeted web development.
 
-See the [changelog](CHANGELOG.md) for changes and roadmap.
+See the [change log](CHANGELOG.md) for changes and road map.
 
 ## Extensions
 After installing the Web Extension Pack and restarting
