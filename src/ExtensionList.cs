@@ -25,6 +25,7 @@ namespace WebExtensionPack
                 { "cd92c0c6-2c32-49a3-83ca-0dc767c7d78e", "Image Sprites" },
                 { "9ca64947-e9ca-4543-bfb8-6cce9be19fd6", "Markdown Editor" },
                 { "7f30a50b-8211-40cf-b881-bd1eb2866478", "HTML Snippet Pack" },
+                { "3a7b4930-a5fb-46ec-a9b8-9610c8f953b8", "File Icons" },
             };
         }
     }

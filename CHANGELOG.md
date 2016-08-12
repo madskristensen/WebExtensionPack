@@ -11,6 +11,12 @@ download in the
 These are the changes to each version that has been released
 on the official Visual Studio extension gallery.
 
+## 1.6
+
+**2016-08-12**
+
+- [x] Added [File Icons](https://visualstudiogallery.msdn.microsoft.com/5e1762e8-a88b-417c-8467-6a65d771cc4e) extension
+
 ## 1.5
 
 **2016-06-27**
