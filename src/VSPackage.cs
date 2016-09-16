@@ -17,18 +17,23 @@ namespace WebExtensionPack
     [ProvideMenuResource("Menus.ctmenu", 1)]
     public sealed class VSPackage : Package
     {
-        protected async override void Initialize()
+        protected override void Initialize()
         {
             Logger.Initialize(this, Vsix.Name);
             ResetExtensions.Initialize(this);
 
-            await Dispatcher.CurrentDispatcher.BeginInvoke(new Action(async () =>
+            Dispatcher.CurrentDispatcher.BeginInvoke(new Action(async () =>
             {
-                await Install();
+                try
+                {
+                    await Install();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Log(ex);
+                }
 
             }), DispatcherPriority.SystemIdle, null);
-
-            base.Initialize();
         }
 
         private async System.Threading.Tasks.Task Install()
@@ -56,7 +61,7 @@ namespace WebExtensionPack
                 foreach (var product in allToBeInstalled)
                 {
                     if (!dialog.IsVisible)
-                        break; // User cancelled the dialog
+                        break; // User canceled the dialog
 
                     dialog.StartDownloading(product.Key);
                     dialog.SetMessage($"Installing {product.Value}...");
