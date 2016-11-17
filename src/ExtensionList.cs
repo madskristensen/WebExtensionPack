@@ -10,7 +10,7 @@ namespace WebExtensionPack
                 { "5fb7364d-2e8c-44a4-95eb-2a382e30fec9", "Web Essentials" },
                 { "148ffa77-d70a-407f-892b-9ee542346862", "Web Compiler"},
                 { "bf95754f-93d3-42ff-bfe3-e05d23188b08", "Image optimizer"},
-                { "950d05f7-bb25-43ce-b682-44b377b5307d", "Glyphfriend"},
+                //{ "950d05f7-bb25-43ce-b682-44b377b5307d", "Glyphfriend"},
                 { "f4ab1e64-5d35-4f06-bad9-bf414f4b3bbb", "Open Command Line"},
                 { "fdd64809-376e-4542-92ce-808a8df06bcc", "Package Installer"},
                 { "10d9b3af-1338-4c45-bc99-4ec38c3a11fb", "Browser Sync"},
