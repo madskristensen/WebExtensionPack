@@ -11,6 +11,10 @@ download in the
 These are the changes to each version that has been released
 on the official Visual Studio extension gallery.
 
+## 1.9
+
+- [x] Added [Package Security Alerts](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.PackageSecurityAlerts) extension
+
 ## 1.7
 
 - [x] Added [Syntax Highlighting Pack](https://visualstudiogallery.msdn.microsoft.com/d92fd742-bab3-4314-b866-50b871d679ee) extension

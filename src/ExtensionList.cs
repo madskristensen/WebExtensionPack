@@ -26,7 +26,8 @@ namespace WebExtensionPack
                 { "9ca64947-e9ca-4543-bfb8-6cce9be19fd6", "Markdown Editor" },
                 { "7f30a50b-8211-40cf-b881-bd1eb2866478", "HTML Snippet Pack" },
                 { "3a7b4930-a5fb-46ec-a9b8-9610c8f953b8", "File Icons" },
-                { "4773ce75-6f30-4269-9557-1f7c30a47be2", "Syntax Highlighting Pack"}
+                { "4773ce75-6f30-4269-9557-1f7c30a47be2", "Syntax Highlighting Pack"},
+                { "1fd37423-142f-4267-8221-93163d573b90", "Package Security Alerts"}
             };
         }
     }
